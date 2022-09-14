@@ -1,6 +1,6 @@
 *.jpg
 *.ckpt
-event.out.*
+events.out.*
 *.csv
 *.pt
 *.txt
