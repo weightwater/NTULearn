@@ -4,4 +4,4 @@ events.out.*
 *.csv
 *.pt
 *.txt
-
+*.json
