@@ -1,0 +1,59 @@
+## GAN
+- Generative Adversarial Network
+- input 
+    - X and Simple Distribution (it can be Guassion Distribution)
+- output 
+    - complex Distribution
+- Component
+    - Generator 
+    - Discriminator
+        - input image from Generator's output
+        - output Scalar used to evaluate input (True or False)
+- Application
+    - Drawing
+    - Chatbot
+- Train
+    - step 1: Train Discriminator
+        - label: 0 or 1 right or wrong 
+        - input: Generator's output or Real image
+        - Gradient decent
+    - step 2: Train Generator
+        - fix Discriminator
+        - use gradient decent train Generator
+        - loss is Discriminator's output
+- What we minimize?
+    - we want generator's Distribution PG can as close as Real Distribution Pdata
+    - Minimize target Divergence between PG and Pdata
+    - Divergence is kind of distance between PG and Pdata
+    - G = argminDiv(PG, Pdata), Div is Divergence
+- How to calculate Divergence
+    - D = argmaxV(D, G)
+    - V(G, D) = E y~Pdata [logD(y)] + E y~PG [log(1-D(y))], D is Discriminator's value
+    - **The important thing is that D is related to JSDivergence**
+    - Why?
+        - D可以描述两组sample的差距，选取V(D, G)中最大的距离代表两组Sample的差距
+        - 因此当Discrimitor区分能力越强或PG和Pdata差距越大时说明两组Distribution的差距越大
+        - 在训练时我们希望Divergence差距越小越好，带入进去理解就是最小化这种D的最大值
+        - 即最小化当前两组Sample之间距离的最大值(其中包含一个越来越厉害能分辨计算两组Sample的Discriminator)
+- Mode Collapse
+    - 一张图
+- Mode Dropping
+    - 种族歧视
+    - 多样性不够
+- Diversity
+    - 评价模型多样性
+- Quality
+    - 一张图片置信率高 
+- Conditional Generator
+    - Generator
+        - input image + condition
+        - output image
+    - Discriminator
+        - input image + condition
+        - scalar value
+- image translation
+- pix2pix
+- Learning from Unpaired Data --- Cycle Gan
+    - Train 两个 Generator 除去原始Generator外 还有一个把前面的Generator的输出还原成原来的输出 
+    - Image style Transfer
+ 
